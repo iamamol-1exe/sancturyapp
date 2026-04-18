@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Manrope } from "next/font/google";
+import { SocketContextProvider } from "@/app/context/socketContext";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -21,7 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={manrope.variable}>
-      <body className="font-body">{children}</body>
+      <body>
+        <SocketContextProvider>{children}</SocketContextProvider>
+      </body>
     </html>
   );
 }
